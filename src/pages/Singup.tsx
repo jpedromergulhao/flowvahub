@@ -126,13 +126,13 @@ export default function Singup() {
                                         onChange={e => setPassword(e.target.value.trim())}
                                         required
                                     />
-                                    <div className='pointer-events-none cursor-pointer absolute inset-0 rounded-md peer-focus:shadow-[0_0_0_3px_rgba(124,58,237,0.1)]'></div>
+                                    <div className='pointer-events-none absolute inset-0 rounded-md peer-focus:shadow-[0_0_0_3px_rgba(124,58,237,0.1)]'></div>
                                 </div>
                                 <button
                                     type="button"
                                     onClick={() => togglePasswordVisibility("password")}
                                     aria-label={showPassword ? "Hide password" : "Show password"}
-                                    className="absolute right-3 border-none text-[#A78BFA] h-fit font-medium text-xs top-0 bottom-0 m-auto"
+                                    className="absolute cursor-pointer right-3 border-none text-[#A78BFA] h-fit font-medium text-xs top-0 bottom-0 m-auto"
                                 >
                                     {showPassword ? "Hide" : "Show"}
                                 </button>
@@ -151,13 +151,13 @@ export default function Singup() {
                                         onChange={e => setConfPassword(e.target.value.trim())}
                                         required
                                     />
-                                    <div className='pointer-events-none cursor-pointer absolute inset-0 rounded-md peer-focus:shadow-[0_0_0_3px_rgba(124,58,237,0.1)]'></div>
+                                    <div className='pointer-events-none absolute inset-0 rounded-md peer-focus:shadow-[0_0_0_3px_rgba(124,58,237,0.1)]'></div>
                                 </div>
                                 <button
                                     type="button"
                                     onClick={() => togglePasswordVisibility("confirm")}
                                     aria-label={showConfPassword ? "Hide password" : "Show password"}
-                                    className="absolute right-3 border-none text-[#A78BFA] h-fit font-medium text-xs top-0 bottom-0 m-auto"
+                                    className="absolute cursor-pointer right-3 border-none text-[#A78BFA] h-fit font-medium text-xs top-0 bottom-0 m-auto"
                                 >
                                     {showConfPassword ? "Hide" : "Show"}
                                 </button>

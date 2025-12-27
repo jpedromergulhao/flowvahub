@@ -110,7 +110,7 @@ export default function Login() {
                                     type="button"
                                     onClick={togglePasswordVisibility}
                                     aria-label={showPassword ? "Hide password" : "Show password"}
-                                    className="absolute right-3 border-none text-[#A78BFA] h-fit font-medium text-xs top-0 bottom-0 m-auto"
+                                    className="absolute cursor-pointer right-3 border-none text-[#A78BFA] h-fit font-medium text-xs top-0 bottom-0 m-auto"
                                 >
                                     {showPassword ? "Hide" : "Show"}
                                 </button>
@@ -125,7 +125,7 @@ export default function Login() {
                             </div>
                             <button
                                 type="submit"
-                                className='w-full h-[55px] gap-2 flex justify-center text-base items-center p-[11px] text-center bg-[#9013FE] text-white  font-medium border-none transition-colors ease-linear duration-[.2s] rounded-[100px] hover:bg-[#6D28D9]"'
+                                className='w-full cursor-pointer h-[55px] gap-2 flex justify-center text-base items-center p-[11px] text-center bg-[#9013FE] text-white  font-medium border-none transition-colors ease-linear duration-[.2s] rounded-[100px] hover:bg-[#6D28D9]'
                                 disabled={loading}
                             >
                                 {loading ? 'Logging in...' : 'Sign in'}

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import logo from '../../assets/logo2.png';
 import profileIcon from '../../assets/profileIcon.png';
 import { UserContext } from '../../context/UserContext';
@@ -10,14 +10,34 @@ interface Link {
 
 interface SidebarProps {
     onClose: () => void;
+    isSidebarOpen: boolean;
 }
 
-export default function Sidebar({ onClose }: SidebarProps) {
+export default function Sidebar({ onClose, isSidebarOpen }: SidebarProps) {
     const user = useContext(UserContext);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+    const activeItem = "Rewards Hub";
+
+    //side bar style
+    const baseClasses = "bg-white text-black font-sans overflow-x-hidden";
+    const desktopClasses = "w-72 flex flex-col h-screen shadow-md border-r border-black/10";
+    const mobileClasses = "fixed top-0 left-0 z-40 w-64 h-full transition-transform duration-300 ease-in-out";
+    const mobileState = isSidebarOpen ? "translate-x-0" : "-translate-x-full";
 
     if (!user) return null;
 
     const { name, email, avatar } = user;
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 1020);
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const navLinks: Link[] = [
         {
@@ -51,7 +71,12 @@ export default function Sidebar({ onClose }: SidebarProps) {
     ];
 
     return (
-        <aside className="w-72 overflow-x-hidden flex flex-col h-screen shadow-md border-r border-black/10 text-black font-sans">
+        <aside className={`
+                            ${baseClasses}
+                            ${isMobile ? mobileClasses : desktopClasses}
+                            ${isMobile ? mobileState : ""}
+                        `}
+        >
             <div className="flex flex-col h-full">
                 <div className="p-2 px-7  my-2 flex justify-start">
                     <img src={logo} loading="eager" alt="Flowva Logo" className="h-[60px]" />
@@ -66,33 +91,47 @@ export default function Sidebar({ onClose }: SidebarProps) {
                         </svg>
                     </button>
                 </div>
-            </div>
-            <nav className="flex-grow px-4">
-                <ul>
-                    {navLinks.map((link: Link) => (
-                        <li className="flex items-center gap-3 px-4 p-[0.75rem] mb-[0.5rem] rounded-[8px] cursor-pointer  duration-200 transition-all text-black hover:bg-[rgba(144,_19,_254,_0.1)] hover:text-[#9013FE]">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="compass" className="svg-inline--fa fa-compass" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path fill="currentColor" d={link.path}></path>
-                            </svg>
-                            <span className="tracking-wide truncate">{link.name}</span>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-            <div className="mt-auto py-3 relative flex justify-center">
-                <div className="absolute top-0 left-4 right-4 border-t border-[#64748B]"></div>
-                <div className="w-full flex items-center justify-between px-4">
-                    <button className="flex items-center border-none">
-                        <div className="w-[40px] h-[40px] relative overflow-hidden rounded-full font-semibold mr-[0.75rem] flex items-center justify-center  text-[#9013FE] bg-[#E9D4FF]">
-                            <img src={avatar ?? profileIcon} alt={`${name} profile picture`} className="h-full w-full rounded-full object-cover" />
-                        </div>
-                        <div className="text-start">
-                            <span className="text-[0.9rem] font-semibold">{name}</span>
-                            <p className="text-[0.8rem] text-[#718096] truncate overflow-x-hidden max-w-[153px]">
-                                {email ?? "—"}
-                            </p>
-                        </div>
-                    </button>
+
+                <nav className="flex-grow px-4">
+                    <ul>
+                        {navLinks.map((link, index) => {
+                            const isActive = link.name === activeItem;
+
+                            return (
+                                <li key={index}
+                                    className={`
+                                flex items-center gap-3 px-4 p-[0.75rem] mb-[0.5rem] rounded-[8px] cursor-pointer duration-200 transition-all
+                                ${isActive
+                                            ? "bg-[rgba(144,19,254,0.1)] text-[#9013FE]"
+                                            : "text-black hover:bg-[rgba(144,19,254,0.1)] hover:text-[#9013FE]"
+                                        }
+                                    `}
+                                >
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="compass" className="svg-inline--fa fa-compass" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d={link.path}></path>
+                                    </svg>
+                                    <span className="tracking-wide truncate">{link.name}</span>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </nav>
+
+                <div className="mt-auto py-3 relative flex justify-center">
+                    <div className="absolute top-0 left-4 right-4 border-t border-[#64748B]"></div>
+                    <div className="w-full flex items-center justify-between px-4">
+                        <button className="flex items-center border-none">
+                            <div className="w-[40px] h-[40px] relative overflow-hidden rounded-full font-semibold mr-[0.75rem] flex items-center justify-center  text-[#9013FE] bg-[#E9D4FF]">
+                                <img src={avatar ?? profileIcon} alt={`${name} profile picture`} className="h-full w-full rounded-full object-cover" />
+                            </div>
+                            <div className="text-start">
+                                <span className="text-[0.9rem] font-semibold">{name}</span>
+                                <p className="text-[0.8rem] text-[#718096] truncate overflow-x-hidden max-w-[153px]">
+                                    {email ?? "—"}
+                                </p>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </aside>

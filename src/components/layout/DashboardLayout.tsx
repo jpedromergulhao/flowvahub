@@ -91,18 +91,15 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
     return (
         <UserContext.Provider value={user}>
-            <div className="flex flex-col md:flex-row min-h-[100dvh] lg:h-screen  lg:md:overflow-hidden w-full">
-                <div className={`fixed inset-y-0 left-0 z-40 transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:relative md:translate-x-0 transition duration-200 ease-in-out`}>
-                    <Sidebar onClose={() => setIsSidebarOpen(false)} />
+                <div className="flex flex-col md:flex-row min-h-[100dvh] lg:h-screen  lg:md:overflow-hidden w-full">
+                    <div className={`${isSidebarOpen ? "fixed" : "hidden"} inset-0 bg-black bg-opacity-50 z-30`}></div>
+
+                    <Sidebar onClose={() => setIsSidebarOpen(false)} isSidebarOpen={isSidebarOpen} />
+
+                    <main className="w-full bg-gray-50 px-[1rem] lg:px-[2rem] lg:pt-[2rem] min-h-screen flex-grow md:overflow-y-auto box-border lg:min-h-0">
+                        {children}
+                    </main>
                 </div>
-                
-                {isSidebarOpen && (
-                    <div onClick={() => setIsSidebarOpen(false)} className="fixed inset-0 bg-black/50 z-30 md:hidden" />
-                )}
-                <main className="w-full bg-gray-50 px-[1rem] lg:px-[2rem] lg:pt-[2rem] min-h-screen flex-grow md:overflow-y-auto box-border lg:min-h-0">
-                    {children}
-                </main>
-            </div>
         </UserContext.Provider>
     )
 }
