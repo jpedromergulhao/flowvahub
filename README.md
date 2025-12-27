@@ -51,7 +51,7 @@ src/
 
 1.  **Clone the repository**:
     ```bash
-    git clone [https://github.com/your-username/flowvahub.git](https://github.com/your-username/flowvahub.git)
+    git clone [https://github.com/jpedromergulhao/flowvahub](https://github.com/jpedromergulhao/flowvahub)
     ```
 
 2.  **Install dependencies**:
