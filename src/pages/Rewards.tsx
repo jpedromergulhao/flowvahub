@@ -5,11 +5,7 @@ import EarnPointsDashboard from "../components/layout/EarnPointsDashboard";
 import RewardsNav from "../components/layout/RewardsNav";
 import RedeemRewards from "../components/layout/RedeemRewards";
 
-interface RewardsProps {
-  onOpenSidebar: () => void;
-}
-
-export default function Rewards({ onOpenSidebar }: RewardsProps) {
+export default function Rewards() {
     const [showRewards, setShowRewards] = useState<boolean>(false);
 
     return (
@@ -18,7 +14,7 @@ export default function Rewards({ onOpenSidebar }: RewardsProps) {
                 <div className="sticky top-0 z-10 bg-gray-50 pb-2 flex py-2 pt-3 lg:pt-0 lg:py-0">
                     <div className="bg-gray-50 flex justify-between items-center w-full">
                         <div className="flex items-center gap-3">
-                            <button className="lg:hidden" onClick={onOpenSidebar}>
+                            <button className="lg:hidden">
                                 <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" width="28">
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
