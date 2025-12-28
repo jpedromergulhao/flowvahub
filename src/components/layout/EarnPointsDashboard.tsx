@@ -102,7 +102,7 @@ export default function EarnPointsDashboard() {
                 <div className="shadow-[0_5px_15px_rgba(0,_0,_0,_0.05)]  rounded-[16px] hover:translate-y-[-5px] hover:shadow-[0_10px_25px_rgba(0,_0,_0,_0.1)] border border-[#f3f4f6] overflow-hidden transition-shadow duration-200">
                     <div className="p-[1rem] relative border border-b-[#f3f4f6] bg-[#eef2ff] border-t-0 border-r-0 border-l-0">
                         <div className="flex items-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="h-6 w-6 text-[#9013fe]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-[#9013fe]">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -146,11 +146,11 @@ export default function EarnPointsDashboard() {
                                     >
                                         {
                                             copied ?
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="text-green-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-600">
                                                     <path d="M20 6 9 17l-5-5"></path>
                                                 </svg>
                                                 :
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-[#9013fe]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#9013fe]">
                                                     <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
                                                     <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
                                                 </svg>
@@ -161,7 +161,7 @@ export default function EarnPointsDashboard() {
                             <div className="flex justify-center gap-[1rem] mt-[1rem]">
                                 {socialLinks.map((link, index) => (
                                     <a href={link.href} key={index} rel="noopener noreferrer" target="_blank" style={link.style} className="w-[30px] h-[30px] rounded-full flex items-center justify-center text-white text-[18px] transition-transform duration-200 hover:translate-y-[-3px]">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="fab" className="svg-inline--fa " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                        <svg aria-hidden="true" focusable="false" className="svg-inline--fa " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                             <path fill="currentColor" d={link.path}></path>
                                         </svg>
                                     </a>

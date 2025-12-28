@@ -24,7 +24,7 @@ export default function PointsBalance() {
                         {points}
                     </div>
                     <div className="w-[100px] h-[100px] flex items-center justify-center">
-                        <div className="animate-spin-slow text-[64px]">🪙</div>
+                        <div className="animate-spin-once text-[64px]">🪙</div>
                     </div>
                 </div>
                 <div className="mt-4">

@@ -5,7 +5,11 @@ import EarnPointsDashboard from "../components/layout/EarnPointsDashboard";
 import RewardsNav from "../components/layout/RewardsNav";
 import RedeemRewards from "../components/layout/RedeemRewards";
 
-export default function Rewards() {
+interface RewardsProps {
+  onOpenSidebar: () => void;
+}
+
+export default function Rewards({ onOpenSidebar }: RewardsProps) {
     const [showRewards, setShowRewards] = useState<boolean>(false);
 
     return (
@@ -14,12 +18,12 @@ export default function Rewards() {
                 <div className="sticky top-0 z-10 bg-gray-50 pb-2 flex py-2 pt-3 lg:pt-0 lg:py-0">
                     <div className="bg-gray-50 flex justify-between items-center w-full">
                         <div className="flex items-center gap-3">
-                            <button className="lg:hidden">
+                            <button className="lg:hidden" onClick={onOpenSidebar}>
                                 <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" width="28">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                     <g id="SVGRepo_iconCarrier">
-                                        <path fill="#000000" fill-rule="evenodd" d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z"></path>
+                                        <path fill="#000000" fillRule="evenodd" d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z"></path>
                                     </g>
                                 </svg>
                             </button>

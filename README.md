@@ -1,6 +1,6 @@
 # FlowvaHub - Rewards Dashboard
 
-This project features a great UI, robust authentication flows, and secure data handling using Supabase.
+This project focuses on a high-fidelity UI, secure authentication flows, and server-side–validated reward logic built with Supabase.
 
 ## 🚀 Overview
 
@@ -8,7 +8,7 @@ Key focus areas included UI accuracy via Tailwind CSS, secure reward claiming vi
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** React.js with TypeScript
+* **Frontend:** React.js, TypeScript and React Router
 * **Styling:** Tailwind CSS
 * **Backend/Database:** Supabase (Auth, PostgreSQL, RPC)
 * **Deployment:** Vercel
@@ -47,6 +47,12 @@ src/
 * **Context API**: Used to avoid prop-drilling, ensuring user points and profile data are consistent across the Sidebar, Header, and Rewards pages.
 * **Database Triggers & RPC**: PostgreSQL functions handle the incrementing of points and streak validation directly on the server to ensure data integrity and security.
 
+## ⚖️ Trade-offs & Technical Decisions
+
+- Backend logic was prioritized for points and streak validation to prevent client-side manipulation.
+- Weekly streak visualization was derived on the client to respect the original backend scope and deadline.
+- Context API was chosen over heavier state management libraries to keep the architecture simple and aligned with the challenge size.
+
 ## 🔧 Installation & Setup
 
 1.  **Clone the repository**:
@@ -73,4 +79,18 @@ src/
 
 ## 📝 Assessment Focus
 
-Due to the limited timeframe that I had to create this project, I prioritized them**Supabase Integration**. This choice allowed for a deep dive into data handling, ensuring that the most critical part of the user economy (points and streaks) was both visually accurate and technically secure.
+Given the limited timeframe, priority was given to **Supabase integration** and **server-side validation**, ensuring the reward economy was technically secure rather than purely visual. This choice allowed for a deep dive into data handling, ensuring that the most critical part of the user economy (points and streaks) was both visually accurate and technically secure.
+
+## 🚫 Out of Scope
+
+- Advanced analytics or admin dashboards
+- Backend changes beyond the original challenge scope
+- Persistent daily streak history metadata
+
+## NOTE 
+
+On 27/12, a few small UI refinements were made to improve the visual quality and user experience of the project. These changes are purely stylistic and do not affect any core functionality or business logic.
+
+Since the backend version delivered by 26/12 does not expose detailed daily streak metadata, and to avoid extending the scope of the technical challenge or modifying core backend logic after the deadline, the backend was intentionally left unchanged.
+
+The weekly streak visualization is therefore derived on the client side, based on the current day and the dailyStreak counter. This approach ensures a correct and consistent user experience while respecting the original challenge constraints. If required, this logic could be easily migrated to the backend by exposing explicit streak metadata.

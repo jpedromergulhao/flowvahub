@@ -26,7 +26,7 @@ export default function RedeemFilter({ activeFilter, setActiveFilter, counts }: 
   ];
 
   return (
-    <div className="relative border-b border-gray-200 mt-4 overflow-x-auto">
+    <div className="relative border-b border-gray-200 mt-4 overflow-x-auto overflow-hidden">
       <div className="flex gap-6 min-w-max">
         {filters.map((filter) => {
           const isActive = activeFilter === filter.id;

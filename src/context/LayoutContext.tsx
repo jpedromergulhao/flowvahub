@@ -1,8 +1,7 @@
 import { createContext, useContext } from "react";
 
 interface LayoutContextData {
-  isSidebarOpen: boolean;
-  setIsSidebarOpen: (open: boolean) => void;
+  openSidebar: () => void;
 }
 
 export const LayoutContext = createContext<LayoutContextData | null>(null);

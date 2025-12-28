@@ -17,11 +17,15 @@ const config: Config = {
                     '50%': { left: '62.397%' },
                     '100%': { left: '120%' },
                 },
+                spinOnce: {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' },
+                },
             },
             animation: {
                 'pulse-soft': 'pulseSoft 2s cubic-bezier(.4,0,.6,1) infinite',
                 sweep: 'sweep 2.5s ease-in-out infinite',
-                "spin-slow": "spin 2.5s ease-in-out 1",
+                'spin-once': 'spinOnce 2s ease-out forwards',
             },
             backgroundImage: {
                 'light-sweep':

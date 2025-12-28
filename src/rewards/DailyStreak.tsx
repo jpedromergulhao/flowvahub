@@ -12,7 +12,25 @@ export default function DailyStreak() {
     const { dailyStreak, refreshUser } = user;
 
     const todayIndex = (new Date().getDay() + 6) % 7;
-    const days: string[] = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+    const activeDaysCount = Math.min(dailyStreak, todayIndex + 1);
+    const activeDays = Array.from(
+        { length: activeDaysCount },
+        (_, i) => todayIndex - i
+    );
+
+    const days = [
+        { key: 'mon', label: 'M' },
+        { key: 'tue', label: 'T' },
+        { key: 'wed', label: 'W' },
+        { key: 'thu', label: 'T' },
+        { key: 'fri', label: 'F' },
+        { key: 'sat', label: 'S' },
+        { key: 'sun', label: 'S' },
+    ];
+
+    //Styles
+    const todayStyle = 'ring-2 ring-[#9013fe] ring-offset-2';
+    const dailyStreakStyle = 'bg-[#70D6FF] border-4 border-cyan-200 text-white';
 
     const handleClaim = async () => {
         setIsClaiming(true);
@@ -64,11 +82,10 @@ export default function DailyStreak() {
                 <div className="flex mt-4 space-x-2 justify-center">
                     {days.map((day, index) => (
                         <div key={index} className={`h-10 w-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all 
-                            ${index === todayIndex
-                                ? "bg-[#70D6FF] border-4 border-cyan-200 text-white"
-                                : "bg-gray-200 text-gray-500"}`}
+                            ${activeDays.includes(index) ? dailyStreakStyle : "bg-gray-200 text-gray-500"}
+                            ${index === todayIndex ? todayStyle : ""}`}
                         >
-                            {day}
+                            {day.label}
                         </div>
                     ))}
                 </div>
@@ -80,7 +97,7 @@ export default function DailyStreak() {
                     disabled={isClaiming}
                     className="mt-3 cursor-pointer w-full py-3 px-6 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-200 bg-[#9013fe] text-white hover:shadow-[0_4px_12px_rgba(144,_19,_254,_0.2)] hover:translate-y-[-2px]"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-zap h-5 w-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-zap h-5 w-5">
                         <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
                     </svg>
                     {isClaiming ? "Claiming..." : "Claim Today's Points"}

@@ -90,16 +90,16 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     if (isFetchingDashboard) return <WelcomeCard name={user.name} />;
 
     return (
-        <UserContext.Provider value={user}>
-                <div className="flex flex-col md:flex-row min-h-[100dvh] lg:h-screen  lg:md:overflow-hidden w-full">
-                    <div className={`${isSidebarOpen ? "fixed" : "hidden"} inset-0 bg-black bg-opacity-50 z-30`}></div>
+        <UserContext.Provider value={user} >
+            <div className="flex flex-col md:flex-row min-h-[100dvh] lg:h-screen  lg:md:overflow-hidden w-full">
+                <div className={`${isSidebarOpen ? "fixed" : "hidden"} inset-0 bg-black bg-opacity-50 z-30`}></div>
 
-                    <Sidebar onClose={() => setIsSidebarOpen(false)} isSidebarOpen={isSidebarOpen} />
-
-                    <main className="w-full bg-gray-50 px-[1rem] lg:px-[2rem] lg:pt-[2rem] min-h-screen flex-grow md:overflow-y-auto box-border lg:min-h-0">
-                        {children}
-                    </main>
-                </div>
+                <Sidebar onClose={() => setIsSidebarOpen(false)} isSidebarOpen={isSidebarOpen} />
+                    
+                <main className="w-full bg-gray-50 px-[1rem] lg:px-[2rem] lg:pt-[2rem] min-h-screen flex-grow md:overflow-y-auto box-border lg:min-h-0">
+                    {children}
+                </main>
+            </div>
         </UserContext.Provider>
     )
 }
